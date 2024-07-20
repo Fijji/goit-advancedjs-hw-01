@@ -1,4 +1,4 @@
-const formData = { email: "", message: "" };
+const formData = { email: '', message: '' };
 
 const form = document.querySelector('.feedback-form');
 const emailInput = form.querySelector('input[name="email"]');
@@ -19,16 +19,14 @@ const loadFromLocalStorage = () => {
   }
 };
 
-
 document.addEventListener('DOMContentLoaded', loadFromLocalStorage);
 
-form.addEventListener('input', (event) => {
+form.addEventListener('input', event => {
   formData[event.target.name] = event.target.value;
   saveToLocalStorage();
 });
 
-
-form.addEventListener('submit', (event) => {
+form.addEventListener('submit', event => {
   event.preventDefault();
 
   if (!formData.email || !formData.message) {
@@ -39,6 +37,6 @@ form.addEventListener('submit', (event) => {
   console.log('Submitted data:', formData);
 
   form.reset();
-  Object.keys(formData).forEach(key => formData[key] = '');
+  Object.keys(formData).forEach(key => (formData[key] = ''));
   localStorage.removeItem(STORAGE_KEY);
 });
